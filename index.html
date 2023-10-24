@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon">
+    <title>Pintinho</title>
+</head>
+
+<body>
+    <div class="ovo" id="ovo">
+        <img id="img-ovo" src="imagens/back-01.png" alt="Ovo inteiro">
+    </div>
+
+    <script>
+        let imgOvo = document.getElementById("img-ovo");
+        let imagens = ["imagens/back-02.png", "imagens/back-03.png", "imagens/back-04.png"];
+        let indiceAtual = 0;
+        let cliques = 0;
+
+        // Adicionar o evento de clique
+        imgOvo.addEventListener("click", clicou);
+
+        function clicou() {
+            if (cliques < 3) {
+                imgOvo.src = imagens[indiceAtual];
+                indiceAtual = (indiceAtual + 1) % imagens.length;
+                cliques++;
+            }
+
+            if (cliques === 3) {
+                // Desativa o evento de clique após o terceiro clique
+                imgOvo.removeEventListener("click", clicou);
+            }
+        }
+    </script>
+</body>
+
+</html>
